@@ -69,6 +69,58 @@ public:
             }
         }
     }
+    int Height() { return internalHeight(this->root); }
+    int internalHeight(TreeNode *node)
+    {
+        if (node == nullptr)
+            return 0;
+        return 1 + max(internalHeight(node->left), internalHeight(node->right));
+    }
+
+    void PreOrder()
+    {
+        internalPreOrder(root);
+        cout << endl;
+    }
+
+    void internalPreOrder(TreeNode *node)
+    {
+        if (node == nullptr)
+            return;
+        cout << node->data << " -> ";
+        internalPreOrder(node->left);
+        internalPreOrder(node->right);
+    }
+
+    void InOrder()
+    {
+        internalInOrder(root);
+        cout << endl;
+    }
+
+    void internalInOrder(TreeNode *node)
+    {
+        if (node == nullptr)
+            return;
+        internalInOrder(node->left);
+        cout << node->data << " -> ";
+        internalInOrder(node->right);
+    }
+
+    void PostOrder()
+    {
+        internalPostOrder(root);
+        cout << endl;
+    }
+
+    void internalPostOrder(TreeNode *node)
+    {
+        if (node == nullptr)
+            return;
+        internalPostOrder(node->left);
+        internalPostOrder(node->right);
+        cout << node->data << " -> ";
+    }
     void print()
     {
         if (root == NULL)
